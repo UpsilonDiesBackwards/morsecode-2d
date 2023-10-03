@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
 
 
     private enum ProsignType {
+        Pause, // This is a non-gameplay enum type that is considered the "empty" or "default" setting of the prosign
         Dot,
-        Dash,
-        Pause // This is a end case. This, theoretically should never be called.
+        Dash
     }
 
     void Start() {
