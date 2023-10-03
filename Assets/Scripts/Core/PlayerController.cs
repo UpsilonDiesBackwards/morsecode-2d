@@ -33,12 +33,15 @@ public class PlayerController : MonoBehaviour
         Pause // This is a end case. This, theoretically should never be called.
     }
 
+    void Start() {
+        HideMorseCodeSprites();
+    }
+
     void Update() {
         if (Input.GetKey(KeyCode.Space)) {
             float hTime = GetHoldDownTime();
-
-            // Debug.Log(GetProsign(hTime));
         }
+
         if (Input.GetKeyUp(KeyCode.Space)) {
             ProsignType pSign = GetProsign(holdTime);
             morseInput[currentInputIndex] = pSign;
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(AutomaticClearDelay);
 
         ClearMorseInput();
+        HideMorseCodeSprites();
         noInputClear = null;
 
         Debug.Log("No input! Automatically reset input array.");
@@ -94,15 +98,24 @@ public class PlayerController : MonoBehaviour
            It is 2:37 AM, I need sleep. */
         
         if (morseInput[0] == ProsignType.Dot) {
+            directionIndex1.enabled = true;
             directionIndex1.sprite = dotProsign;
         } else if (morseInput[0] == ProsignType.Dash) {
+            directionIndex1.enabled = true;
             directionIndex1.sprite = dashProsign;
         }
 
         if (morseInput[1] == ProsignType.Dot) {
-            directionIndex1.sprite = dotProsign;
+            directionIndex2.enabled = true;
+            directionIndex2.sprite = dotProsign;
         } else if (morseInput[1] == ProsignType.Dash) {
-            directionIndex1.sprite = dashProsign;
+            directionIndex2.enabled = true;
+            directionIndex2.sprite = dashProsign;
         }
+    }
+
+    void HideMorseCodeSprites() {
+        directionIndex1.enabled = false;
+        directionIndex2.enabled = false;
     }
 }
