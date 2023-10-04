@@ -17,7 +17,7 @@ public class InputMachine : MonoBehaviour
     void Update()
     {
         InputTimer();
-        Debug.Log(timePressed);
+        // Debug.Log(timePressed);
     }
 
     void InputTimer()
@@ -46,8 +46,7 @@ public class InputMachine : MonoBehaviour
     {
         foreach (Animator animator in animators)
         { 
-            
+            animators[x].SetTrigger("ShouldFade");
         }
-        animators[x].SetTrigger("Flash");
     }
 }
