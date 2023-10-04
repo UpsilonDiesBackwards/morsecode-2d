@@ -5,13 +5,13 @@ using UnityEngine;
 public class InputMachine : MonoBehaviour
 {
     float timePressed = 0f;
-    [SerializeField] float timeComp = 0.5f;
+    [SerializeField] float timeComp = 0.3f;
     [SerializeField] Animator[] animators;
     int x = 0;
 
     void Start()
     {
-        
+        animators[x].SetTrigger("Flash");
     }
 
     void Update()
@@ -29,10 +29,12 @@ public class InputMachine : MonoBehaviour
 
     void MorseTyper()
     {
-        if (timePressed > timeComp) { animators[x].SetTrigger("asd"); }
-        if (timePressed < timeComp) { animators[x].SetTrigger("asd");}
+        if (timePressed > timeComp) { animators[x].SetTrigger("Dash"); }
+        if (timePressed < timeComp) { animators[x].SetTrigger("Dot");}
         x++;
-        if ( x > 4 )
+        animators[x].SetTrigger("Flash");
+        Debug.Log(x);
+        if ( x > 3 )
         {
             x = 0;
             //run the entering command.
@@ -44,7 +46,8 @@ public class InputMachine : MonoBehaviour
     {
         foreach (Animator animator in animators)
         { 
-            //if (animator.)
+            
         }
+        animators[x].SetTrigger("Flash");
     }
 }
