@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InputMachine : MonoBehaviour
 {
+    [Header("Time and References")]
     float timePressed = 0f;
     [SerializeField] float timeComp = 0.3f;
     [SerializeField] Animator[] animators;
     [SerializeField] int pI = 0; // formally 'x', this is the index of the last prosign inputted.
 
+    [Header("Automatic Resetting")]
     private Coroutine AutoReset;
     [SerializeField] float autoResetDelay = 4.0f;
+
+    [Header("Array Information")]
+    public int[] ControllerArray = new int[4];
+
+    [Header("Audio")]
+    public AudioSource aSource;
+    public AudioClip DotSound;
+    public AudioClip DashSound;
 
     void Start()
     {
@@ -38,34 +49,68 @@ public class InputMachine : MonoBehaviour
     }
 
     void MorseTyper()
-    {   
-        if (timePressed > timeComp) { animators[pI].SetTrigger("Dash"); }
-        if (timePressed < timeComp) { animators[pI].SetTrigger("Dot");}
+    {
+        if (timePressed < timeComp)
+        {
+            animators[pI].SetTrigger("Dot");
+            PlayDotSound();
+            ControllerArray[pI] = 0;
+        }
+        if (timePressed > timeComp)
+        {
+            animators[pI].SetTrigger("Dash");
+            PlayDashSound();
+            ControllerArray[pI] = 1;
+        }
+
         pI++;
-        animators[pI].SetTrigger("Flash");
         if ( pI > 3 )
         {
             Debug.Log("Prosign Index Reset");
             pI = 0;
+
+            if (pI == 3)
+            {
+                Debug.Log("Check on final prowsign");
+            }
+
             //run the entering command.
             MorseReset();
         }
+
+        animators[pI].SetTrigger("Flash");
     }
 
     void MorseReset()
     {
         foreach (Animator animator in animators)
-        { 
+        {
+            animator.SetTrigger("ShouldFade");
+            ControllerArray[pI] = 0;
+            if (animator.gameObject.tag == "FirstProsign") {
+                animator.SetTrigger("Flash");
+            } else {
+                animator.SetTrigger("Blank");
+            }
         }
-        animators[pI].SetTrigger("Flash");
     }
 
     IEnumerator AutoResetAfterDelay() {
-        Debug.Log("Coroutine started!");
+        // Debug.Log("Coroutine started!");
         yield return new WaitForSeconds(autoResetDelay);
+       
         MorseReset();
-
         AutoReset = null;
-        Debug.Log("Prosigns reset!");
+        // Debug.Log("Prosigns reset!");
+    }
+
+    void PlayDotSound()
+    {
+        aSource.PlayOneShot(DotSound, 0.5f);
+    }
+
+    void PlayDashSound()
+    {
+        aSource.PlayOneShot(DashSound, 0.5f);
     }
 }
