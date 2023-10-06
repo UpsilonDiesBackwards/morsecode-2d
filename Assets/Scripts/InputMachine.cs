@@ -20,11 +20,7 @@ public class InputMachine : MonoBehaviour
     void Update()
     {
         InputTimer();
-<<<<<<< HEAD
         // Debug.Log(timePressed);
-=======
-        Debug.Log(timePressed);
->>>>>>> ec08ab56f91b219742fd4699552e18cef3be8f9b
     }
 
     void InputTimer()
