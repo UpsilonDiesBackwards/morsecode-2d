@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3768324326082455729}
   - component: {fileID: 2751464548437027403}
   - component: {fileID: 2824556498890730844}
+  - component: {fileID: 8670285568620544390}
   m_Layer: 0
   m_Name: MorseSymbol
   m_TagString: Untagged
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8670285568620544390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413721873813699416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbce451f136bfa34f9324a67d07e4546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

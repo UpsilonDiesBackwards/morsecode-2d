@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f52ee29dd00e38a2e9d1a8c7287ae708
+=======
+guid: e10c869e02601cb69818b52840a4f948
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -130,7 +134,11 @@ ScriptedImporter:
       y: 4
       width: 14
       height: 6
+<<<<<<< HEAD
     spriteID: 7d356fd0812cd876ea867afe11ba94ca
+=======
+    spriteID: 1956201c5c74ff01b871b7fc4301da8b
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -155,7 +163,11 @@ ScriptedImporter:
         y: 1
         width: 14
         height: 6
+<<<<<<< HEAD
       spriteId: 7d356fd0812cd876ea867afe11ba94ca
+=======
+      spriteId: 1956201c5c74ff01b871b7fc4301da8b
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     linkedCells: []
     parentIndex: -1
   platformSettings: []

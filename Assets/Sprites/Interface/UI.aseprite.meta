@@ -150,7 +150,11 @@ ScriptedImporter:
       y: 102
       width: 160
       height: 90
+<<<<<<< HEAD
     spriteID: 47fc59a80161046d383ace9a49571203
+=======
+    spriteID: d516712839908f9d9917ea0889dbe423
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +174,11 @@ ScriptedImporter:
       y: 200
       width: 160
       height: 90
+<<<<<<< HEAD
     spriteID: b82fbe410969dc2c1b1c5fe0ee893453
+=======
+    spriteID: 50f2a6b0a6b07c212969211e55557f6a
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -203,7 +211,11 @@ ScriptedImporter:
         y: 0
         width: 160
         height: 90
+<<<<<<< HEAD
       spriteId: 47fc59a80161046d383ace9a49571203
+=======
+      spriteId: d516712839908f9d9917ea0889dbe423
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     - name: UI_Frame_2
       frameIndex: 2
       cellRect:
@@ -211,7 +223,11 @@ ScriptedImporter:
         y: 0
         width: 160
         height: 90
+<<<<<<< HEAD
       spriteId: b82fbe410969dc2c1b1c5fe0ee893453
+=======
+      spriteId: 50f2a6b0a6b07c212969211e55557f6a
+>>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
     linkedCells: []
     parentIndex: -1
   platformSettings:

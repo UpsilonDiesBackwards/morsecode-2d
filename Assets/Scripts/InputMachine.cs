@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InputMachine : MonoBehaviour
-{
+public class InputMachine : MonoBehaviour {
     [Header("Time and References")]
     float timePressed = 0f;
     [SerializeField] float timeComp = 0.3f;
@@ -22,6 +21,8 @@ public class InputMachine : MonoBehaviour
     public AudioSource aSource;
     public AudioClip DotSound;
     public AudioClip DashSound;
+    public float minPitch = 0.8f;
+    public float maxPitch = 1.2f;
 
     void Start()
     {
@@ -106,11 +107,13 @@ public class InputMachine : MonoBehaviour
 
     void PlayDotSound()
     {
+        aSource.pitch = (Random.Range(minPitch, maxPitch));
         aSource.PlayOneShot(DotSound, 0.5f);
     }
 
     void PlayDashSound()
     {
+        aSource.pitch = (Random.Range(minPitch, maxPitch));
         aSource.PlayOneShot(DashSound, 0.5f);
     }
 }
