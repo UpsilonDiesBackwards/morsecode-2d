@@ -16,7 +16,7 @@ public class InputMachine : MonoBehaviour
     [SerializeField] float autoResetDelay = 4.0f;
 
     [Header("Array Information")]
-    public int[] ControllerArray = new int[4];
+    public int[] ControllerArray = new int[4]; // 0 = default, 1 = dot, 2 = dash.
 
     [Header("Audio")]
     public AudioSource aSource;
@@ -38,6 +38,7 @@ public class InputMachine : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) { timePressed = 0; }
         if (Input.GetKey(KeyCode.Space)) { timePressed += Time.deltaTime; }
+        
         if (Input.GetKeyUp(KeyCode.Space)) { 
             MorseTyper(); 
 
@@ -54,24 +55,24 @@ public class InputMachine : MonoBehaviour
         {
             animators[pI].SetTrigger("Dot");
             PlayDotSound();
-            ControllerArray[pI] = 0;
+            ControllerArray[pI] = 1;
         }
         if (timePressed > timeComp)
         {
             animators[pI].SetTrigger("Dash");
             PlayDashSound();
-            ControllerArray[pI] = 1;
+            ControllerArray[pI] = 2;
         }
 
         pI++;
         if ( pI > 3 )
         {
-            Debug.Log("Prosign Index Reset");
+            // Debug.Log("Prosign Index Reset");
             pI = 0;
 
-            if (pI == 3)
+            if (ControllerArray[3] != 0)
             {
-                Debug.Log("Check on final prowsign");
+                Debug.Log("Check on final prosign");
             }
 
             //run the entering command.
