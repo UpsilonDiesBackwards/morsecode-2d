@@ -10,7 +10,7 @@ public class InputMachine : MonoBehaviour {
     [SerializeField] Animator[] animators;
     [SerializeField] Animator bgAnimator;
     [SerializeField] PlayerAgentController playerController;
-    [SerializeField] int pI = 0;
+    int pI = 0;
 
     public int[] inputArray = new int[4];
 

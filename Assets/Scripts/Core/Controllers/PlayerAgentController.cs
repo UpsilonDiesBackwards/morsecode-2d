@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class PlayerAgentController : MonoBehaviour
 {
-    public float gridSize = 0.9f;
+    [SerializeField] Collider2D columboTheCollider;
 
     private Vector2 directionToMove;
     private int timeToMove;
 
-    public GameObject[] enemies;
-
-    void Start() {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    }
-
     public void InterpretMorse(int[] controllerArray) {
+
+        Debug.Log(controllerArray[0]);
+        Debug.Log(controllerArray[1]);
+        Debug.Log(controllerArray[2]);
+        Debug.Log(controllerArray[3]);
+
         // this is hell. I apologise. I forgive
 
         if (controllerArray[0] == 0 && controllerArray[1] == 0) { directionToMove = new Vector2(1, 0); }
@@ -36,24 +36,16 @@ public class PlayerAgentController : MonoBehaviour
     void Move(Vector2 direction, int time) {
         for (int i = 1; i <= time; i++) {
             transform.position += new Vector3(direction.x, direction.y);
-            if (gameObject.GetComponent<Collider2D>().IsTouchingLayers()) {
-                Debug.Log("Collided!");
+
+            bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0);
+            Debug.Log (wallCheck);
+            if (wallCheck)
+            {
+                transform.position -= new Vector3(direction.x, direction.y);
+                i = 10;
             }
         }
-
-        foreach (GameObject e in enemies) {
-            e.GetComponent<EnemyAgentController>().Move();
-        }
-
-    }
-
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.tag == "Enemy") {
-            Die();
-        }
-    }
-
-    void Die() {
-       Debug.Log("RIP"); 
+        Debug.Log(direction);
+        Debug.Log(time);
     }
 }
