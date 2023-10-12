@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerAgentController : MonoBehaviour
 {
     [SerializeField] Collider2D columboTheCollider;
-    bool collided = false;
 
     public float gridSize = 0.9f;
 
@@ -42,9 +41,9 @@ public class PlayerAgentController : MonoBehaviour
     void Move(Vector2 direction, int time) {
         for (int i = 0; i <= time; i++) {
             transform.position += new Vector3(direction.x, direction.y);
-            if (columboTheCollider.OverlapCollider().Length)
+            if (gameObject.GetComponent<Collider2D>().IsTouchingLayers())
             {
-
+                Debug.Log("Fuck you Tayler");
             }
         }
         Debug.Log(direction);
