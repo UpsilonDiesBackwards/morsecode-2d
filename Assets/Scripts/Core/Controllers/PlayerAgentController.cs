@@ -39,7 +39,7 @@ public class PlayerAgentController : MonoBehaviour
     }
 
     void Move(Vector2 direction, int time) {
-        for (int i = 0; i <= time; i++) {
+        for (int i = 1; i <= time; i++) {
             transform.position += new Vector3(direction.x, direction.y);
             if (gameObject.GetComponent<Collider2D>().IsTouchingLayers())
             {
