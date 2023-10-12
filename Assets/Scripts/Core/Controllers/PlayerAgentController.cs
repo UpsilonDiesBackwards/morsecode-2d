@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAgentController : MonoBehaviour
@@ -23,28 +24,25 @@ public class PlayerAgentController : MonoBehaviour
 
         // this is hell. I apologise
 
-        if (directionHalf[0] == 0 && directionHalf[1] == 0) { directionToMove = new Vector2(1, 0); }
+        if (controllerArray[0] == 0 && controllerArray[1] == 0) { directionToMove = new Vector2(1, 0); }
+        if (controllerArray[0] == 0 && controllerArray[1] == 1) { directionToMove = new Vector2(0, 1); }
+        if (controllerArray[0] == 1 && controllerArray[1] == 0) { directionToMove = new Vector2(0, -1); }
+        if (controllerArray[0] == 1 && controllerArray[1] == 1) { directionToMove = new Vector2(-1, 0); }
 
-        if (directionHalf[0] == 0 && directionHalf[1] == 1) { directionToMove = new Vector2(0, 1); }
-
-        if (directionHalf[0] == 1 && directionHalf[1] == 0) { directionToMove = new Vector2(0, -1); }
-
-        if (directionHalf[0] == 1 && directionHalf[1] == 1) { directionToMove = new Vector2(-1, 0); }
-
-        if (timeHalf[0] == 0 && timeHalf[1] == 0) { timeToMove = 0; }
-
-        if (timeHalf[0] == 0 && timeHalf[1] == 1) { timeToMove = 1; }
-
-        if (timeHalf[0] == 1 && timeHalf[1] == 0) { timeToMove = 2; }
-
-        if (timeHalf[0] == 1 && timeHalf[1] == 1) { timeToMove = 3; }
+        if (controllerArray[2] == 0 && controllerArray[3] == 0) { timeToMove = 1; }
+        if (controllerArray[2] == 0 && controllerArray[3] == 1) { timeToMove = 2; }
+        if (controllerArray[2] == 1 && controllerArray[3] == 0) { timeToMove = 3; }
+        if (controllerArray[2] == 1 && controllerArray[3] == 1) { timeToMove = 4; }
 
         Move(directionToMove, timeToMove);
     }
 
     void Move(Vector2 direction, int time) {
-        for (int i = 0; i <= time; i++) {
-            transform.position = new Vector3(direction.x * gridSize, direction.y * gridSize, 0f);
-        }
+        /*for (int i = 0; i <= time; i++) {
+            transform.position += new Vector3(direction.x * time, direction.y * time);
+        }*/
+        Debug.Log(direction);
+        Debug.Log(time);
+        transform.position += new Vector3(direction.x * time, direction.y * time);
     }
 }
