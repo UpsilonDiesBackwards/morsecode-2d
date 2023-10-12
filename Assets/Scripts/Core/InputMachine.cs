@@ -10,14 +10,9 @@ public class InputMachine : MonoBehaviour {
     [SerializeField] Animator[] animators;
     [SerializeField] Animator bgAnimator;
     [SerializeField] PlayerAgentController playerController;
-    [SerializeField] int pI = 0; // formally 'x', this is the index of the last prosign inputted.
+    [SerializeField] int pI = 0;
 
-    [Header("Automatic Resetting")]
-    private Coroutine AutoReset;
-    [SerializeField] float autoResetDelay = 4.0f;
-
-    [Header("Array Information")]
-    public int[] ControllerArray = new int[4];
+    public int[] inputArray = new int[4];
 
     [Header("Audio")]
     public AudioSource aSource;
@@ -39,17 +34,15 @@ public class InputMachine : MonoBehaviour {
 
     void InputTimer()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) { timePressed = 0; OnTapperPress();}
-        if (Input.GetKey(KeyCode.Space)) { timePressed += Time.deltaTime; }
+        timePressed += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            timePressed = 0;
+            bgAnimator.SetTrigger("on");
+        }
         if (Input.GetKeyUp(KeyCode.Space)) { 
-            MorseTyper(); 
-
-            OnTapperUnpress();
-
-            if (AutoReset != null) { // Start the countdown immediately (will change)
-                StopCoroutine(AutoResetAfterDelay());
-            }
-            AutoReset = StartCoroutine(AutoResetAfterDelay());    
+            MorseTyper();
+            bgAnimator.SetTrigger("off");
         }
     }
 
@@ -59,55 +52,36 @@ public class InputMachine : MonoBehaviour {
         {
             animators[pI].SetTrigger("Dot");
             PlayDotSound();
-            ControllerArray[pI] = 0;
+            inputArray[pI] = 0;
         }
         if (timePressed > timeComp)
         {
             animators[pI].SetTrigger("Dash");
             PlayDashSound();
-            ControllerArray[pI] = 1;
+            inputArray[pI] = 1;
         }
 
         pI++;
         if ( pI > 3 )
         {
             // Debug.Log("Prosign Index Reset");
-            playerController.InterpretMorse(ControllerArray);
+            playerController.InterpretMorse(inputArray);
 
             pI = 0;
-
-            if (pI == 3)
-            {
-                // Debug.Log("Check on final prosign");
-            }
 
             //run the entering command.
             MorseReset();
         }
-        animators[pI].SetTrigger("Flash");
+        else { animators[pI].SetTrigger("Flash"); }
     }
 
     void MorseReset()
     {
         foreach (Animator animator in animators)
         {
-            animator.SetTrigger("ShouldFade");
-            ControllerArray[pI] = 0;
-            if (animator.gameObject.tag == "FirstProsign") {
-                animator.SetTrigger("Flash");
-            } else {
-                animator.SetTrigger("Blank");
-            }
+            animator.SetTrigger("Blank");
         }
-    }
-
-    IEnumerator AutoResetAfterDelay() {
-        // Debug.Log("Coroutine started!");
-        yield return new WaitForSeconds(autoResetDelay);
-       
-        MorseReset();
-        AutoReset = null;
-        // Debug.Log("Prosigns reset!");
+        animators[pI].SetTrigger("Flash");
     }
 
     void PlayDotSound()
@@ -120,13 +94,5 @@ public class InputMachine : MonoBehaviour {
     {
         aSource.pitch = (Random.Range(minPitch, maxPitch));
         aSource.PlayOneShot(DashSound, 0.5f);
-    }
-
-    void OnTapperPress() {
-        bgAnimator.SetTrigger("Pressed");
-    }
-
-    void OnTapperUnpress() {
-        bgAnimator.SetTrigger("Unpressed");
     }
 }
