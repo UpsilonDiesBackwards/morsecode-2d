@@ -180,10 +180,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MorseSymbol
       objectReference: {fileID: 0}
-    - target: {fileID: 8670285568620544390, guid: 2776f2aab98ce0347ba66576794c621b, type: 3}
-      propertyPath: bgAnimator
-      value: 
-      objectReference: {fileID: 1858256921}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -389,6 +385,7 @@ MonoBehaviour:
   - {fileID: 1866431429}
   - {fileID: 14734331}
   - {fileID: 1848544256}
+  bgAnimator: {fileID: 1858256921}
   pI: 0
   autoResetDelay: 4
   ControllerArray: 00000000000000000000000000000000
@@ -976,7 +973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -360054434253768620, guid: 15688082d36043d458b5acd19bd4cd42, type: 3}
+  m_Sprite: {fileID: -140371161084173060, guid: 15688082d36043d458b5acd19bd4cd42, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

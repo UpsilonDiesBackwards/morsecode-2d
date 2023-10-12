@@ -8,6 +8,8 @@ public class InputMachine : MonoBehaviour {
     float timePressed = 0f;
     [SerializeField] float timeComp = 0.3f;
     [SerializeField] Animator[] animators;
+    [SerializeField] Animator bgAnimator;
+    [SerializeField] PlayerAgentController playerController;
     [SerializeField] int pI = 0; // formally 'x', this is the index of the last prosign inputted.
 
     [Header("Automatic Resetting")]
@@ -37,10 +39,12 @@ public class InputMachine : MonoBehaviour {
 
     void InputTimer()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) { timePressed = 0; }
+        if (Input.GetKeyDown(KeyCode.Space)) { timePressed = 0; OnTapperPress();}
         if (Input.GetKey(KeyCode.Space)) { timePressed += Time.deltaTime; }
         if (Input.GetKeyUp(KeyCode.Space)) { 
             MorseTyper(); 
+
+            OnTapperUnpress();
 
             if (AutoReset != null) { // Start the countdown immediately (will change)
                 StopCoroutine(AutoResetAfterDelay());
@@ -67,18 +71,19 @@ public class InputMachine : MonoBehaviour {
         pI++;
         if ( pI > 3 )
         {
-            Debug.Log("Prosign Index Reset");
+            // Debug.Log("Prosign Index Reset");
+            playerController.InterpretMorse(ControllerArray);
+
             pI = 0;
 
             if (pI == 3)
             {
-                Debug.Log("Check on final prowsign");
+                // Debug.Log("Check on final prosign");
             }
 
             //run the entering command.
             MorseReset();
         }
-
         animators[pI].SetTrigger("Flash");
     }
 
@@ -115,5 +120,13 @@ public class InputMachine : MonoBehaviour {
     {
         aSource.pitch = (Random.Range(minPitch, maxPitch));
         aSource.PlayOneShot(DashSound, 0.5f);
+    }
+
+    void OnTapperPress() {
+        bgAnimator.SetTrigger("Pressed");
+    }
+
+    void OnTapperUnpress() {
+        bgAnimator.SetTrigger("Unpressed");
     }
 }

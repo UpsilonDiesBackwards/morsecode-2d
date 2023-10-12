@@ -7,7 +7,7 @@ public class BackgroundUpdater : MonoBehaviour
     [SerializeField] Animator bgAnimator;
 
     void OnTapperPress() {
-        bgAnimator.SetTrigger("Pressed");
+        // bgAnimator.SetTrigger("Pressed");
     }
 
     void OnTapperUnpress() {

@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: UI
+  - name: UI_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 160
       height: 90
-    spriteID: 069837f0e70c9c146b3c6ea10c8aedc0
+    spriteID: 5c922ed6f123889aa9157b9a0fa90e80
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -150,11 +150,7 @@ ScriptedImporter:
       y: 102
       width: 160
       height: 90
-<<<<<<< HEAD
-    spriteID: 47fc59a80161046d383ace9a49571203
-=======
-    spriteID: d516712839908f9d9917ea0889dbe423
->>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
+    spriteID: 82630347b7ae0cc98b54eef8f2975d38
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -174,11 +170,7 @@ ScriptedImporter:
       y: 200
       width: 160
       height: 90
-<<<<<<< HEAD
-    spriteID: b82fbe410969dc2c1b1c5fe0ee893453
-=======
-    spriteID: 50f2a6b0a6b07c212969211e55557f6a
->>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
+    spriteID: b0e91a6769139adee9e639012a177a83
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -203,7 +195,7 @@ ScriptedImporter:
         y: 0
         width: 160
         height: 90
-      spriteId: 069837f0e70c9c146b3c6ea10c8aedc0
+      spriteId: 5c922ed6f123889aa9157b9a0fa90e80
     - name: UI_Frame_1
       frameIndex: 1
       cellRect:
@@ -211,11 +203,7 @@ ScriptedImporter:
         y: 0
         width: 160
         height: 90
-<<<<<<< HEAD
-      spriteId: 47fc59a80161046d383ace9a49571203
-=======
-      spriteId: d516712839908f9d9917ea0889dbe423
->>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
+      spriteId: 82630347b7ae0cc98b54eef8f2975d38
     - name: UI_Frame_2
       frameIndex: 2
       cellRect:
@@ -223,62 +211,10 @@ ScriptedImporter:
         y: 0
         width: 160
         height: 90
-<<<<<<< HEAD
-      spriteId: b82fbe410969dc2c1b1c5fe0ee893453
-=======
-      spriteId: 50f2a6b0a6b07c212969211e55557f6a
->>>>>>> 2fe5b1c (add main menu functionality, and update background so that the mouse holds down the morse code tapper)
+      spriteId: b0e91a6769139adee9e639012a177a83
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Server
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: WebGL
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 160, y: 90}
