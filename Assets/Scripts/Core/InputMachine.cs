@@ -9,7 +9,7 @@ public class InputMachine : MonoBehaviour {
     [SerializeField] float timeComp = 0.3f;
     [SerializeField] Animator[] animators;
     [SerializeField] Animator bgAnimator;
-    [SerializeField] PlayerAgentController playerController;
+    [SerializeField]  public PlayerAgentController playerController;
     int pI = 0;
 
     public int[] inputArray = new int[4];

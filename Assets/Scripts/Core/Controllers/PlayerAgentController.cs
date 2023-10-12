@@ -6,18 +6,25 @@ using UnityEngine;
 
 public class PlayerAgentController : MonoBehaviour
 {
-    [SerializeField] Collider2D columboTheCollider;
-
     private Vector2 directionToMove;
     private int timeToMove;
 
+    public GameObject[] enemies;
+
+    [SerializeField] LevelChanger lChanger;
+
+    [SerializeField] LayerMask wallLayer;
+
+    void Start() {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        FindLevelChangerScript();
+    }
+
+    public void FindLevelChangerScript() {
+        lChanger = GameObject.FindGameObjectWithTag("GameplayController").GetComponent<LevelChanger>();
+    }
+
     public void InterpretMorse(int[] controllerArray) {
-
-        Debug.Log(controllerArray[0]);
-        Debug.Log(controllerArray[1]);
-        Debug.Log(controllerArray[2]);
-        Debug.Log(controllerArray[3]);
-
         // this is hell. I apologise. I forgive
 
         if (controllerArray[0] == 0 && controllerArray[1] == 0) { directionToMove = new Vector2(1, 0); }
@@ -37,15 +44,37 @@ public class PlayerAgentController : MonoBehaviour
         for (int i = 1; i <= time; i++) {
             transform.position += new Vector3(direction.x, direction.y);
 
-            bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0);
-            Debug.Log (wallCheck);
+            bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, wallLayer);
+
+            // Debug.Log (wallCheck);
             if (wallCheck)
             {
                 transform.position -= new Vector3(direction.x, direction.y);
                 i = 10;
             }
         }
-        Debug.Log(direction);
-        Debug.Log(time);
+        
+        foreach (GameObject e in enemies) {
+            e.GetComponent<EnemyAgentController>().Move();
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.tag == "Enemy") {
+            Die();
+        } else if (collider.tag == "Goal") {
+            CompleteLevel();
+        }
+    }
+
+    void Die() {
+       Debug.Log("RIP");
+       Destroy(gameObject);
+    }
+
+    void CompleteLevel() {
+        lChanger.LoadNextLevel();
+        Debug.Log("Level Complete!");
     }
 }

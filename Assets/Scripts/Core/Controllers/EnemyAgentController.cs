@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAgentController : MonoBehaviour
 {
+    [SerializeField] LayerMask wallLayer;
+
     // Start is called before the first frame update
     public void Move() {
         float dirIndex = Random.Range(0, 3);
@@ -16,7 +18,10 @@ public class EnemyAgentController : MonoBehaviour
 
         transform.position += new Vector3(directionToMove.x, directionToMove.y);
 
-
-        Debug.Log("Moving!");
+        bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, wallLayer);
+        if (wallCheck)
+        {
+            transform.position -= new Vector3(directionToMove.x, directionToMove.y);
+        }
     }
 }
