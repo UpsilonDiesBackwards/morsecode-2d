@@ -5,14 +5,7 @@ using UnityEngine;
 public class EnemyAgentController : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Move() {
+        float directionToMove = Random.Range(0, 3);
     }
 }
