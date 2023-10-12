@@ -8,13 +8,8 @@ public class PlayerAgentController : MonoBehaviour
 {
     [SerializeField] Collider2D columboTheCollider;
 
-    public float gridSize = 0.9f;
-
     private Vector2 directionToMove;
     private int timeToMove;
-
-    [SerializeField] private int[] directionHalf = new int[2];
-    [SerializeField] private int[] timeHalf = new int[2];
 
     public void InterpretMorse(int[] controllerArray) {
 
@@ -41,9 +36,13 @@ public class PlayerAgentController : MonoBehaviour
     void Move(Vector2 direction, int time) {
         for (int i = 1; i <= time; i++) {
             transform.position += new Vector3(direction.x, direction.y);
-            if (gameObject.GetComponent<Collider2D>().IsTouchingLayers())
+
+            bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0);
+            Debug.Log (wallCheck);
+            if (wallCheck)
             {
-                Debug.Log("Fuck you Tayler");
+                transform.position -= new Vector3(direction.x, direction.y);
+                i = 10;
             }
         }
         Debug.Log(direction);
