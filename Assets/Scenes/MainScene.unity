@@ -386,7 +386,7 @@ MonoBehaviour:
   - {fileID: 14734331}
   - {fileID: 1848544256}
   bgAnimator: {fileID: 1858256921}
-  playerController: {fileID: 3729273706786627966, guid: 4bca7d874f631db109139f9f41975535, type: 3}
+  playerController: {fileID: 3729273707795317298}
   pI: 0
   autoResetDelay: 8
   ControllerArray: 00000000000000000000000000000000
@@ -1587,6 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c7186a8b37b7cd8bf062d71970841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  columboTheCollider: {fileID: 0}
   gridSize: 5
   directionHalf: 0000000000000000
   timeHalf: 0000000000000000
@@ -1638,7 +1639,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
