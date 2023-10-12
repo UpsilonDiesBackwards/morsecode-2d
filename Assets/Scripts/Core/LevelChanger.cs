@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,11 +20,15 @@ public class LevelChanger : MonoBehaviour
     }
 
     public void LoadNextLevel() {
-        SceneManager.UnloadSceneAsync(sceneNames[currentSceneIndex]);
-        
+        UnloadCurrentScene();
+
         currentSceneIndex++;
         SceneManager.LoadScene(sceneNames[currentSceneIndex], LoadSceneMode.Additive);
         // FindPlayerAgent();
+    }
+
+    public void UnloadCurrentScene() {
+        SceneManager.UnloadSceneAsync(sceneNames[currentSceneIndex]);
     }
 
     void FindPlayerAgent() {

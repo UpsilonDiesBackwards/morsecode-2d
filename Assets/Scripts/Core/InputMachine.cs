@@ -29,6 +29,11 @@ public class InputMachine : MonoBehaviour {
     void Update()
     {
         InputTimer();
+        if (playerController.isDead) {
+            bgAnimator.SetTrigger("Died");
+            enabled = false;
+        }
+
         // Debug.Log(timePressed);
     }
 

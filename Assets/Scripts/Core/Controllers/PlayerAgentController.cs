@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class PlayerAgentController : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerAgentController : MonoBehaviour
     [SerializeField] LevelChanger lChanger;
 
     [SerializeField] LayerMask wallLayer;
+
+    public bool isDead = false;
 
     void Start() {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -45,7 +48,6 @@ public class PlayerAgentController : MonoBehaviour
             transform.position += new Vector3(direction.x, direction.y);
 
             bool wallCheck = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, wallLayer);
-
             // Debug.Log (wallCheck);
             if (wallCheck)
             {
@@ -69,8 +71,11 @@ public class PlayerAgentController : MonoBehaviour
     }
 
     void Die() {
-       Debug.Log("RIP");
-       Destroy(gameObject);
+        Debug.Log("RIP");
+        isDead = true;
+
+        lChanger.UnloadCurrentScene();
+        Destroy(gameObject);
     }
 
     void CompleteLevel() {
