@@ -375,12 +375,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345336185}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c5afe9eac8d10b4dbf71fe4f8fee4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeComp: 0.3
+  timeComp: 0.2
   animators:
   - {fileID: 1795813944}
   - {fileID: 1866431429}
@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgAnimator: {fileID: 1858256921}
   inputMachine: {fileID: 345336186}
+  levelChanger: {fileID: 345336190}
 --- !u!114 &345336190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +527,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345336185}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14440bd8f42e7ee4888c5beef740c4a4, type: 3}
   m_Name: 
@@ -855,7 +856,7 @@ Animator:
   m_GameObject: {fileID: 1858256917}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9ba849acd75828d3685a3dfbafa898d6, type: 2}
+  m_Controller: {fileID: 9100000, guid: be2862498c6b0cd4db61af6c75150c40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

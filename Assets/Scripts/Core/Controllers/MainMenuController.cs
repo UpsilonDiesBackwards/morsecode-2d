@@ -6,15 +6,13 @@ public class MainMenuController : MonoBehaviour
 {
     public Animator bgAnimator;
     public InputMachine inputMachine;
-
-    void Start() {
-        bgAnimator.SetTrigger("ShowMainMenu");
-    }
+    public LevelChanger levelChanger;
 
     void Update() {
         if (Input.GetKey(KeyCode.Space)) {
-            bgAnimator.SetTrigger("HideMainMenu");            
+            bgAnimator.SetTrigger("ExitMenu");            
             inputMachine.enabled = true;
+            levelChanger.enabled = true;
             enabled = false;
         }
     }

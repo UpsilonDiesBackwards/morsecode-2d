@@ -30,7 +30,7 @@ public class InputMachine : MonoBehaviour {
     {
         InputTimer();
         if (playerController.isDead) {
-            bgAnimator.SetTrigger("Died");
+            bgAnimator.SetTrigger("GameOver");
             enabled = false;
         }
 
@@ -43,11 +43,11 @@ public class InputMachine : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             timePressed = 0;
-            bgAnimator.SetTrigger("on");
+            bgAnimator.SetTrigger("Pressed");
         }
         if (Input.GetKeyUp(KeyCode.Space)) { 
             MorseTyper();
-            bgAnimator.SetTrigger("off");
+            bgAnimator.SetTrigger("Released");
         }
     }
 
